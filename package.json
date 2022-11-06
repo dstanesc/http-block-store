@@ -1,0 +1,40 @@
+{
+  "name": "@dstanesc/http-block-store",
+  "description": "Readonly content-addressable storage (CAS) based on IPFS via custom HTTP gateways",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dstanesc/http-block-store",
+  "repository": "https://github.com/dstanesc/http-block-store",
+  "license": "(Apache-2.0 AND MIT)",
+  "author": "dstanesc <dstanesc@gmail.com>",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist node_modules",
+    "build": "tsc",
+    "test": "npm-run-all build test:jest",
+    "dev": "tsc -w",
+    "test:jest": "NODE_OPTIONS=--experimental-vm-modules cross-env jest --runInBand dist",
+    "start": "tsc && node --experimental-specifier-resolution=node --loader ts-node/esm src/tmp.ts"
+  },
+  "jest": {
+    "testRegex": "(\\.(test|spec))\\.(js)$",
+     "testEnvironment": "jest-environment-node"
+  },
+  "devDependencies": {
+    "@dstanesc/store-chunky-bytes": "^0.0.8",
+    "@types/jest": "^28.1.5",
+    "@types/uuid": "^8.3.4",
+    "cross-env": "7.0.3",
+    "jest": "^28.1.2",
+    "multiformats": "^9.8.1",
+    "npm-run-all": "4.1.5",
+    "rimraf": "3.0.2",
+    "typescript": "^4.5.5",
+    "uuid": "^8.3.2"
+  },
+  "dependencies": {
+    "axios": "^1.1.3"
+  }
+}
