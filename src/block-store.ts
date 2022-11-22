@@ -19,6 +19,8 @@ const blockStore = ({ cache, resolver }: { cache?: any, resolver?: Resolver }) =
         if (!bytes) {
             const response = await axios.get(resolver(cid), { responseType: 'arraybuffer' })
             bytes = new Uint8Array(response.data)
+            if (cache)
+                cache[cid.toString()] = bytes
         }
         return bytes
     }

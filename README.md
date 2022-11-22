@@ -24,12 +24,10 @@ const { get } = blockStore({ cache  })
 const { ipfsIo: resolver } = resolvers()
 const { get } = blockStore({ cache, resolver })
 
-// plugged custom resolver
-const resolver = (cid: any) => `https://${cid.toString()}.ipfs.w3s.link`
+// plug custom resolver
+const resolver = (cid: any) => `http://192.168.1.205:8080/ipfs/${cid.toString()}`
 const { get } = blockStore({ cache, resolver })
-
 ```
-
 
 ## Build
 
@@ -38,6 +36,17 @@ npm run clean
 npm install
 npm run build
 npm run test
+```
+
+## Test
+
+Current test exec times
+```
+block get API
+  ✓ zero config (922 ms)
+  ✓ w3s.link explicit (825 ms)
+  ✓ ipfs.io explicit (467 ms)
+  ✓ plug custom resolver (78 ms)
 ```
 
 ## Licenses

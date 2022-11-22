@@ -20,16 +20,16 @@ describe('block get API', function () {
     const { read } = chunkyStore()
 
     // retrieve data published (to ipfs) previously by @dstanesc/ipfs-block-store tests
-    const root = CID.parse('bafkreidt6hqnrg67gu2rrdp3zgdntx6c74h5wppkdmo4kfpzlcpuoe3dhq')
+    const root = CID.parse('bafkreihgjhazynaiwrztthz6zt5eawje4dbqmtnpkm2oz7yi6zqgxpgk5m')
 
     const retrieved = await retrieve(read, 0, 10, RECORD_SIZE_BYTES, { root, decode, get })
     //retrieved.forEach(result => console.log(result))
     assert.strictEqual(retrieved.length, 10)
-    assert.strictEqual(retrieved[0], '326d04b4-c886-422d-9974-2c7132f02922')
-    assert.strictEqual(retrieved[1], 'f65257e8-8711-4bcd-81cf-f17e577b0689')
-    assert.strictEqual(retrieved[2], '1af88f9a-a0d0-4657-a23c-7ce38fd71a28')
-    assert.strictEqual(retrieved[8], '2e2a7a6d-0284-4a43-aef5-5aaebea45c7b')
-    assert.strictEqual(retrieved[9], 'b16020a9-d34c-494f-81e7-a6f66fdc9c50')
+    assert.strictEqual(retrieved[0], '605318b7-f360-46c8-8007-6ed4d786ab9f')
+    assert.strictEqual(retrieved[1], '8da2596c-eeb0-4d76-a810-3d593c26cf5d')
+    assert.strictEqual(retrieved[2], 'acfda5f0-bcc6-47e2-8108-27433ed0838b')
+    assert.strictEqual(retrieved[8], '57682427-b1fe-41ec-8229-aa009c04b3a4')
+    assert.strictEqual(retrieved[9], '3dba56e6-22db-4347-a752-a02f67b9b798')
   })
 
   test("w3s.link explicit", async () => {
@@ -42,16 +42,16 @@ describe('block get API', function () {
     const { read } = chunkyStore()
 
     // retrieve data published (to ipfs) previously by @dstanesc/ipfs-block-store tests
-    const root = CID.parse('bafkreidt6hqnrg67gu2rrdp3zgdntx6c74h5wppkdmo4kfpzlcpuoe3dhq')
+    const root = CID.parse('bafkreihgjhazynaiwrztthz6zt5eawje4dbqmtnpkm2oz7yi6zqgxpgk5m')
 
     const retrieved = await retrieve(read, 0, 10, RECORD_SIZE_BYTES, { root, decode, get })
     //retrieved.forEach(result => console.log(result))
     assert.strictEqual(retrieved.length, 10)
-    assert.strictEqual(retrieved[0], '326d04b4-c886-422d-9974-2c7132f02922')
-    assert.strictEqual(retrieved[1], 'f65257e8-8711-4bcd-81cf-f17e577b0689')
-    assert.strictEqual(retrieved[2], '1af88f9a-a0d0-4657-a23c-7ce38fd71a28')
-    assert.strictEqual(retrieved[8], '2e2a7a6d-0284-4a43-aef5-5aaebea45c7b')
-    assert.strictEqual(retrieved[9], 'b16020a9-d34c-494f-81e7-a6f66fdc9c50')
+    assert.strictEqual(retrieved[0], '605318b7-f360-46c8-8007-6ed4d786ab9f')
+    assert.strictEqual(retrieved[1], '8da2596c-eeb0-4d76-a810-3d593c26cf5d')
+    assert.strictEqual(retrieved[2], 'acfda5f0-bcc6-47e2-8108-27433ed0838b')
+    assert.strictEqual(retrieved[8], '57682427-b1fe-41ec-8229-aa009c04b3a4')
+    assert.strictEqual(retrieved[9], '3dba56e6-22db-4347-a752-a02f67b9b798')
   })
 
   test("ipfs.io explicit", async () => {
@@ -64,37 +64,37 @@ describe('block get API', function () {
     const { read } = chunkyStore()
 
     // retrieve data published (to ipfs) previously by @dstanesc/ipfs-block-store tests
-    const root = CID.parse('bafkreidt6hqnrg67gu2rrdp3zgdntx6c74h5wppkdmo4kfpzlcpuoe3dhq')
+    const root = CID.parse('bafkreihgjhazynaiwrztthz6zt5eawje4dbqmtnpkm2oz7yi6zqgxpgk5m')
 
     const retrieved = await retrieve(read, 0, 10, RECORD_SIZE_BYTES, { root, decode, get })
 
     assert.strictEqual(retrieved.length, 10)
-    assert.strictEqual(retrieved[0], '326d04b4-c886-422d-9974-2c7132f02922')
-    assert.strictEqual(retrieved[1], 'f65257e8-8711-4bcd-81cf-f17e577b0689')
-    assert.strictEqual(retrieved[2], '1af88f9a-a0d0-4657-a23c-7ce38fd71a28')
-    assert.strictEqual(retrieved[8], '2e2a7a6d-0284-4a43-aef5-5aaebea45c7b')
-    assert.strictEqual(retrieved[9], 'b16020a9-d34c-494f-81e7-a6f66fdc9c50')
+    assert.strictEqual(retrieved[0], '605318b7-f360-46c8-8007-6ed4d786ab9f')
+    assert.strictEqual(retrieved[1], '8da2596c-eeb0-4d76-a810-3d593c26cf5d')
+    assert.strictEqual(retrieved[2], 'acfda5f0-bcc6-47e2-8108-27433ed0838b')
+    assert.strictEqual(retrieved[8], '57682427-b1fe-41ec-8229-aa009c04b3a4')
+    assert.strictEqual(retrieved[9], '3dba56e6-22db-4347-a752-a02f67b9b798')
   })
 
   test("plug custom resolver", async () => {
 
     // ipfs-block-store api
     const cache = {}
-    const resolver = (cid: any) => `https://${cid.toString()}.ipfs.w3s.link`
+    const resolver = (cid: any) => `http://192.168.1.205:8080/ipfs/${cid.toString()}`
     const { get } = blockStore({ cache, resolver })
     const { decode } = codec()
     const { read } = chunkyStore()
 
     // retrieve data published (to ipfs) previously by @dstanesc/ipfs-block-store tests
-    const root = CID.parse('bafkreidt6hqnrg67gu2rrdp3zgdntx6c74h5wppkdmo4kfpzlcpuoe3dhq')
+    const root = CID.parse('bafkreihgjhazynaiwrztthz6zt5eawje4dbqmtnpkm2oz7yi6zqgxpgk5m')
 
     const retrieved = await retrieve(read, 0, 10, RECORD_SIZE_BYTES, { root, decode, get })
 
     assert.strictEqual(retrieved.length, 10)
-    assert.strictEqual(retrieved[0], '326d04b4-c886-422d-9974-2c7132f02922')
-    assert.strictEqual(retrieved[1], 'f65257e8-8711-4bcd-81cf-f17e577b0689')
-    assert.strictEqual(retrieved[2], '1af88f9a-a0d0-4657-a23c-7ce38fd71a28')
-    assert.strictEqual(retrieved[8], '2e2a7a6d-0284-4a43-aef5-5aaebea45c7b')
-    assert.strictEqual(retrieved[9], 'b16020a9-d34c-494f-81e7-a6f66fdc9c50')
+    assert.strictEqual(retrieved[0], '605318b7-f360-46c8-8007-6ed4d786ab9f')
+    assert.strictEqual(retrieved[1], '8da2596c-eeb0-4d76-a810-3d593c26cf5d')
+    assert.strictEqual(retrieved[2], 'acfda5f0-bcc6-47e2-8108-27433ed0838b')
+    assert.strictEqual(retrieved[8], '57682427-b1fe-41ec-8229-aa009c04b3a4')
+    assert.strictEqual(retrieved[9], '3dba56e6-22db-4347-a752-a02f67b9b798')
   })
 })

@@ -1,7 +1,7 @@
 {
   "name": "@dstanesc/http-block-store",
   "description": "Readonly content-addressable storage (CAS) based on IPFS via custom HTTP gateways",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/dstanesc/http-block-store",
   "repository": "https://github.com/dstanesc/http-block-store",
   "license": "(Apache-2.0 AND MIT)",
